@@ -1,0 +1,13 @@
+//store all answers from a multi-choice question in an array
+%%answer_array = sgapiGetValue(QUESTION NUMBER);
+
+//iterate through the array to print the values
+foreach (%%answer_array as %%key => %%value) {
+    %%output .= sgapiPrint_R(%%value)
+}
+
+//iterate through the array to store values in a hidden field, then run an action mapped to that hidden field
+foreach (%%answer_array as %%key => %%value) {
+  sgapiSetValue(HIDDEN VALUE QUESTION NUMBER, %%value);
+  sgapiRunAction(ACTION QUESTION NUMBER);
+}
