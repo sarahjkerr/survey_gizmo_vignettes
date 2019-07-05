@@ -11,3 +11,10 @@ foreach (%%answer_array as %%key => %%value) {
   sgapiSetValue(HIDDEN VALUE QUESTION NUMBER, %%value);
   sgapiRunAction(ACTION QUESTION NUMBER);
 }
+
+//Get answers selected and store them in an actual accessible array (one that doesn't reference option SKUs)
+%%answer_array = sgapiGetValue(QUESTION NUMBER);
+%%all_values = sgapiArrayValues(%%answer_array);
+
+//access an array using its index (after it's been transformed such that the key is the index and not the option SKU)
+%%first_array_item = %%all_values[0]
